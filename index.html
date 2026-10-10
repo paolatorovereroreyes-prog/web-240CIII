@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LUXE JOYERÍA · Elegancia atemporal</title>
+  <!-- Google Fonts para un toque sofisticado -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <!-- Font Awesome para iconos sutiles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* RESET Y VARIABLES GLOBALES */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --gold: #c6a15b;
+      --gold-light: #e5d4b1;
+      --dark: #1e1e1e;
+      --soft-dark: #2b2b2b;
+      --cream: #faf7f2;
+      --white: #ffffff;
+      --transition: all 0.3s ease;
+      --shadow: 0 15px 30px rgba(0, 0, 0, 0.05);
+      --shadow-strong: 0 20px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--cream);
+      color: var(--dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* HEADER Y NAVEGACIÓN */
+    header {
+      background-color: var(--white);
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      padding: 1rem 0;
+    }
+
+    .header-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 700;
+      color: var(--dark);
+      letter-spacing: 2px;
+    }
+
+    .logo span {
+      color: var(--gold);
+      font-weight: 300;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      font-weight: 400;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .nav-links a {
+      transition: var(--transition);
+      position: relative;
+      padding-bottom: 4px;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: var(--gold);
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 1.5rem;
+      color: var(--dark);
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    /* HERO SECTION */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?q=80&w=2070&auto=format&fit=crop') center/cover no-repeat;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      text-align: center;
+      color: var(--white);
+      padding: 2rem;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      background-color: rgba(0, 0, 0, 0.3);
+      backdrop-filter: blur(4px);
+      padding: 3rem 2rem;
+      border-radius: 4px;
+      border: 1px solid rgba(198, 161, 91, 0.3);
+    }
+
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 600;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      letter-spacing: 3px;
+    }
+
+    .hero h1 span {
+      color: var(--gold);
+      font-weight: 300;
+      font-style: italic;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      font-weight: 300;
+      letter-spacing: 0.5px;
+    }
+
+    .btn {
+      display: inline-block;
+      background-color: var(--gold);
+      color: var(--dark);
+      padding: 0.9rem 2.5rem;
+      border-radius: 40px;
+      font-weight: 500;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+      transition: var(--transition);
+      border: 1px solid var(--gold);
+    }
+
+    .btn:hover {
+      background-color: transparent;
+      color: var(--gold);
+      box-shadow: 0 0 15px rgba(198, 161, 91, 0.5);
+    }
+
+    /* SECCIÓN COLECCIONES */
+    .section-title {
+      text-align: center;
+      margin: 5rem 0 3rem;
+    }
+
+    .section-title h2 {
+      font-size: 2.8rem;
+      font-weight: 500;
+      color: var(--dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title .divider {
+      width: 80px;
+      height: 2px;
+      background-color: var(--gold);
+      margin: 1rem auto;
+    }
+
+    .section-title p {
+      color: #666;
+      font-size: 1rem;
+      max-width: 600px;
+      margin: 0 auto;
+      font-weight: 300;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin-bottom: 5rem;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-strong);
+    }
+
+    .card-img {
+      height: 300px;
+      overflow: hidden;
+    }
+
+    .card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .card:hover .card-img img {
+      transform: scale(1.05);
+    }
+
+    .card-info {
+      padding: 1.8rem 1.5rem;
+      text-align: center;
+    }
+
+    .card-info h3 {
+      font-size: 1.6rem;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .card-info p {
+      color: #777;
+      font-size: 0.95rem;
+      margin-bottom: 1.2rem;
+      font-weight: 300;
+    }
+
+    .card-info .price {
+      font-weight: 500;
+      color: var(--gold);
+      font-size: 1.2rem;
+      letter-spacing: 1px;
+    }
+
+    /* SECCIÓN DESTACADA (BANNER) */
+    .featured {
+      background: linear-gradient(135deg, #faf7f2 0%, #f0e7db 100%);
+      padding: 4rem 0;
+      margin: 3rem 0;
+    }
+
+    .featured-flex {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .featured-text {
+      flex: 1 1 300px;
+    }
+
+    .featured-text h2 {
+      font-size: 2.8rem;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .featured-text h2 span {
+      color: var(--gold);
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .featured-text p {
+      margin-bottom: 2rem;
+      color: #555;
+      font-weight: 300;
+      font-size: 1.1rem;
+    }
+
+    .featured-img {
+      flex: 1 1 300px;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: var(--shadow-strong);
+    }
+
+    .featured-img img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* TESTIMONIOS */
+    .testimonios {
+      margin: 5rem 0;
+    }
+
+    .testimonio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+
+    .testimonio-card {
+      background: var(--white);
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: var(--shadow);
+      text-align: center;
+      border-bottom: 3px solid var(--gold-light);
+    }
+
+    .testimonio-card i {
+      color: var(--gold);
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      opacity: 0.7;
+    }
+
+    .testimonio-card p {
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      color: #555;
+      font-weight: 300;
+    }
+
+    .testimonio-card h4 {
+      font-weight: 600;
+      font-size: 1.1rem;
+    }
+
+    .testimonio-card span {
+      color: var(--gold);
+      font-size: 0.8rem;
+      letter-spacing: 1px;
+    }
+
+    /* FOOTER */
+    footer {
+      background-color: var(--dark);
+      color: #ccc;
+      padding: 3rem 0 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-col h4 {
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 500;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      margin-bottom: 1.2rem;
+      text-transform: uppercase;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 0.8rem;
+      font-size: 0.9rem;
+      font-weight: 300;
+    }
+
+    .footer-col ul li a {
+      transition: var(--transition);
+    }
+
+    .footer-col ul li a:hover {
+      color: var(--gold);
+      padding-left: 5px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .social-icons a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      background-color: rgba(255, 255, 255, 0.08);
+      border-radius: 50%;
+      transition: var(--transition);
+      color: var(--white);
+    }
+
+    .social-icons a:hover {
+      background-color: var(--gold);
+      color: var(--dark);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.8rem;
+      font-weight: 300;
+      letter-spacing: 1px;
+    }
+
+    /* MEDIA QUERIES */
+    @media (max-width: 768px) {
+      .header-flex {
+        flex-wrap: wrap;
+      }
+
+      .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+        padding: 1.5rem 0 0.5rem;
+        text-align: center;
+      }
+
+      .nav-links.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+
+      .hero-content {
+        padding: 2rem 1.2rem;
+      }
+
+      .section-title h2 {
+        font-size: 2.2rem;
+      }
+
+      .featured-text h2 {
+        font-size: 2.2rem;
+      }
+
+      .featured-flex {
+        gap: 2rem;
+      }
+
+      .grid-3 {
+        gap: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .btn {
+        padding: 0.8rem 1.8rem;
+        font-size: 0.8rem;
+      }
+
+      .section-title h2 {
+        font-size: 1.8rem;
+      }
+
+      .card-info h3 {
+        font-size: 1.4rem;
+      }
+    }
+
+    /* Pequeño ajuste para imágenes de cards */
+    .card-img img {
+      background-color: #f5f0e8;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container header-flex">
+      <div class="logo">LUXE <span>JOYERÍA</span></div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menú">
+        <i class="fas fa-bars"></i>
+      </button>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#">Inicio</a></li>
+          <li><a href="#">Colecciones</a></li>
+          <li><a href="#">Alta Joyería</a></li>
+          <li><a href="#">Nosotros</a></li>
+          <li><a href="#">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Elegancia <span>atemporal</span></h1>
+      <p>Piezas únicas elaboradas a mano con los materiales más nobles</p>
+      <a href="#" class="btn">Descubrir colección</a>
+    </div>
+  </section>
+
+  <!-- COLECCIONES DESTACADAS -->
+  <div class="container">
+    <div class="section-title">
+      <h2>Colecciones exclusivas</h2>
+      <div class="divider"></div>
+      <p>Diseños que capturan la esencia de la sofisticación y el arte joyero</p>
+    </div>
+
+    <div class="grid-3">
+      <!-- Card 1 -->
+      <article class="card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80&w=1887&auto=format&fit=crop" alt="Anillo de diamantes">
+        </div>
+        <div class="card-info">
+          <h3>Anillos Eternity</h3>
+          <p>Oro blanco 18k y diamantes talla brillante</p>
+          <div class="price">Desde 2.450 €</div>
+        </div>
+      </article>
+
+      <!-- Card 2 -->
+      <article class="card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1611085583191-a3b181a88401?q=80&w=2070&auto=format&fit=crop" alt="Collar de oro">
+        </div>
+        <div class="card-info">
+          <h3>Collares Lumière</h3>
+          <p>Oro amarillo con colgante de zafiro</p>
+          <div class="price">Desde 1.890 €</div>
+        </div>
+      </article>
+
+      <!-- Card 3 -->
+      <article class="card">
+        <div class="card-img">
+          <img src="https://images.unsplash.com/photo-1631982690223-8aa4be0a2497?q=80&w=1974&auto=format&fit=crop" alt="Pendientes de perlas">
+        </div>
+        <div class="card-info">
+          <h3>Pendientes Perla</h3>
+          <p>Perlas cultivadas y oro rosa 18k</p>
+          <div class="price">Desde 980 €</div>
+        </div>
+      </article>
+    </div>
+  </div>
+
+  <!-- SECCIÓN DESTACADA (BANNER) -->
+  <section class="featured">
+    <div class="container featured-flex">
+      <div class="featured-text">
+        <h2>Alta joyería <span>artesanal</span></h2>
+        <p>Cada pieza es creada por maestros orfebres con décadas de experiencia. Utilizamos diamantes certificados y metales preciosos de comercio justo.</p>
+        <a href="#" class="btn" style="background-color: transparent; color: var(--gold); border: 1px solid var(--gold);">Conocer más</a>
+      </div>
+      <div class="featured-img">
+        <img src="https://images.unsplash.com/photo-1620656798579-1984d9e87df7?q=80&w=2070&auto=format&fit=crop" alt="Joyero trabajando">
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIOS -->
+  <div class="container testimonios">
+    <div class="section-title">
+      <h2>Lo que dicen nuestros clientes</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="testimonio-grid">
+      <div class="testimonio-card">
+        <i class="fas fa-quote-right"></i>
+        <p>"El anillo de compromiso superó todas mis expectativas. La atención al detalle es simplemente perfecta."</p>
+        <h4>Laura Méndez</h4>
+        <span>Compra verificada</span>
+      </div>
+      <div class="testimonio-card">
+        <i class="fas fa-quote-right"></i>
+        <p>"Un servicio excepcional. Me ayudaron a diseñar un collar único para mi madre. Quedó fascinada."</p>
+        <h4>Carlos Ruiz</h4>
+        <span>Compra verificada</span>
+      </div>
+      <div class="testimonio-card">
+        <i class="fas fa-quote-right"></i>
+        <p>"La calidad de los materiales y el acabado artesanal se nota en cada pieza. Volveré a comprar sin duda."</p>
+        <h4>Elena Vidal</h4>
+        <span>Compra verificada</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>LUXE JOYERÍA</h4>
+          <ul>
+            <li><a href="#">Sobre nosotros</a></li>
+            <li><a href="#">Nuestro taller</a></li>
+            <li><a href="#">Sostenibilidad</a></li>
+            <li><a href="#">Prensa</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Atención al cliente</h4>
+          <ul>
+            <li><a href="#">Envíos y devoluciones</a></li>
+            <li><a href="#">Guía de tallas</a></li>
+            <li><a href="#">Cuidado de joyas</a></li>
+            <li><a href="#">Preguntas frecuentes</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Contacto</h4>
+          <ul>
+            <li><i class="fas fa-map-pin" style="margin-right: 8px; color: var(--gold);"></i> Calle Serrano 45, Madrid</li>
+            <li><i class="fas fa-phone" style="margin-right: 8px; color: var(--gold);"></i> +34 910 123 456</li>
+            <li><i class="fas fa-envelope" style="margin-right: 8px; color: var(--gold);"></i> hola@luxejoyeria.com</li>
+          </ul>
+          <div class="social-icons">
+            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" aria-label="Pinterest"><i class="fab fa-pinterest-p"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        &copy; 2025 LUXE JOYERÍA. Todas las piezas son únicas. Diseño artesanal.
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript para menú móvil -->
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      // Cambiar icono (opcional)
+      const icon = menuToggle.querySelector('i');
+      if (navLinks.classList.contains('active')) {
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      } else {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+    });
+
+    // Cerrar menú al hacer click en un enlace (mejora UX en móviles)
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+        const icon = menuToggle.querySelector('i');
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      });
+    });
+  </script>
+
+</body>
+</html>
